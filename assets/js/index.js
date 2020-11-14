@@ -28,7 +28,9 @@ class CoronavirusGraph {
         $.each(history, function (key, value) {
             let lastDay = days[days.length - 1];
             if (days.length === 0 || lastDay !== value.day) {
-                days.push(value.day);
+                let day = new Date(Date.parse(value.day));
+                days.push(day.toLocaleDateString("cs"));
+
                 active.push(value.cases.active);
                 recovered.push(value.cases.recovered)
                 total.push(value.cases.total)
