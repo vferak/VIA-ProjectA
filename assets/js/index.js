@@ -21,43 +21,50 @@ class CoronavirusGraph {
         let history = this.client.getHistory(country);
 
         let days = [];
-        let data = []
+        let active = [];
+        let recovered = [];
+        let total = [];
 
         $.each(history, function (key, value) {
             let lastDay = days[days.length - 1];
             if (days.length === 0 || lastDay !== value.day) {
                 days.push(value.day);
-                data.push(value.cases.active)
+                active.push(value.cases.active);
+                recovered.push(value.cases.recovered)
+                total.push(value.cases.total)
             }
         });
 
         days = days.reverse();
-        data = data.reverse()
 
-        this.drawGraph('myChart', days, data);
+        this.drawGraph('active', days, active.reverse(), 'Active cases', 'rgb(255, 99, 132)');
+        this.drawGraph('recovered', days, recovered.reverse(), 'Recovered cases', 'rgb(99, 255, 132)');
+        this.drawGraph('total', days, total.reverse(), 'Total cases', 'rgb(255, 0, 0)');
     }
 
-    drawGraph(graphId, labels, data) {
-        let graph = $('#' + graphId).get(0).getContext('2d');
+    drawGraph(graphId, labels, data, label, color) {
+        let $graph = $('#' + graphId);
 
         let graphData = {
             labels: labels,
             datasets: [{
-                label: 'COVID-19 Cases',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                label: label,
+                backgroundColor: color,
+                borderColor: color,
                 data: data
             }]
         }
 
-        if (!this.chart) {
-            this.chart = new Chart(graph, {
+        if (!$graph.data('graph')) {
+            let chart = new Chart($graph.get(0).getContext('2d'), {
                 type: 'line',
                 data: graphData
             });
+
+            $graph.data('graph', chart);
         } else {
-            this.chart.data = graphData;
-            this.chart.update();
+            $graph.data('graph').data = graphData;
+            $graph.data('graph').update();
         }
     }
 }
