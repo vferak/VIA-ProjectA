@@ -9,32 +9,48 @@
 </head>
 <body>
 
-<main>
-    <section class="container">
-        <div class="row text-center">
-            <div class="col-12">
-                <label>
-                    Choose country:
-                    <select id="country"></select>
-                </label>
+<header class="container mb-3">
+    <h1 class="d-inline-block mt-2">My Corona Graphs</h1>
+    <label class="float-right mt-4">
+        Country:
+        <select id="country"></select>
+    </label>
+</header>
+
+<main class="container">
+    <div class="row text-center mb-4">
+        <div class="col-md-4">
+            <div class="statbox statbox-active">
+                <h4 class="font-weight-bold"></h4>
+                <span>Active</span>
             </div>
         </div>
-        <div class="row text-center">
-            <div class="col-12">
-                <canvas id="active"></canvas>
+        <div class="col-md-4">
+            <div class="statbox statbox-recovered">
+                <h4 class="font-weight-bold"></h4>
+                <span>Recovered</span>
             </div>
         </div>
-        <div class="row text-center">
-            <div class="col-12">
-                <canvas id="recovered"></canvas>
+        <div class="col-md-4">
+            <div class="statbox statbox-total">
+                <h4 class="font-weight-bold"></h4>
+                <span>Total</span>
             </div>
         </div>
-        <div class="row text-center">
-            <div class="col-12">
-                <canvas id="total"></canvas>
-            </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-12">
+            <canvas id="active"></canvas>
         </div>
-    </section>
+    </div>
+    <div class="row text-center">
+        <div class="col-xl-6">
+            <canvas id="recovered"></canvas>
+        </div>
+        <div class="col-xl-6">
+            <canvas id="total"></canvas>
+        </div>
+    </div>
 </main>
 
 <footer class="footer">

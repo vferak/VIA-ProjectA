@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+h1 {
+  font-family: "Righteous", cursive;
+}
 
+.statbox {
+  padding: 20px 0;
+}
+.statbox.statbox-active {
+  background-color: #ff6384;
+}
+.statbox.statbox-recovered {
+  background-color: #63ff84;
+}
+.statbox.statbox-total {
+  background-color: red;
+}
 
 /*# sourceMappingURL=style.css.map */

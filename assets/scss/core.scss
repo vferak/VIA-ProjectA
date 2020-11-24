@@ -1,0 +1,19 @@
+h1 {
+    font-family: 'Righteous', cursive;
+}
+
+.statbox {
+    padding: 20px 0;
+
+    &.statbox-active {
+        background-color: rgb(255, 99, 132);
+    }
+
+    &.statbox-recovered {
+        background-color: rgb(99, 255, 132);
+    }
+
+    &.statbox-total {
+        background-color: rgb(255, 0, 0);
+    }
+}

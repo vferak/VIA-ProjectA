@@ -38,10 +38,17 @@ class CoronavirusGraph {
         });
 
         days = days.reverse();
+        active = active.reverse();
+        recovered = recovered.reverse();
+        total = total.reverse();
 
-        this.drawGraph('active', days, active.reverse(), 'Active cases', 'rgb(255, 99, 132)');
-        this.drawGraph('recovered', days, recovered.reverse(), 'Recovered cases', 'rgb(99, 255, 132)');
-        this.drawGraph('total', days, total.reverse(), 'Total cases', 'rgb(255, 0, 0)');
+        this.drawGraph('active', days, active, 'Active cases', 'rgb(255, 99, 132)');
+        this.drawGraph('recovered', days, recovered, 'Recovered cases', 'rgb(99, 255, 132)');
+        this.drawGraph('total', days, total, 'Total cases', 'rgb(255, 0, 0)');
+
+        $('.statbox-active h4').html(active[active.length - 1].toLocaleString());
+        $('.statbox-recovered h4').html(recovered[recovered.length - 1].toLocaleString());
+        $('.statbox-total h4').html(total[total.length - 1].toLocaleString());
     }
 
     drawGraph(graphId, labels, data, label, color) {
